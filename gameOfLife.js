@@ -70,14 +70,16 @@ class GameOfLife {
         }
       })
 
-      // return adjacentRows.map(arr => {
+      // let allCells = adjacentRows.map(arr => {
       //   arr.filter((element, idx) => {
       //     if (Math.abs(idx - col) <= 1) {
       //       return element;
       //     }
       //   })
-      //   return arr
+      //   return [...arr]
       // })
+
+      // return allCells
 
       return adjacentRows.reduce((accum, arr) => {
         return accum + arr.reduce((acc, el, idx) => {
