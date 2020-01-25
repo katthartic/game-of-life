@@ -64,11 +64,28 @@ class GameOfLife {
 
       let cellState = this.getCell(row, col);
 
-      return this.board.filter((element, idx) => {
+      let adjacentRows = this.board.filter((element, idx) => {
         if (Math.abs(row - idx) <= 1) {
           return element;
         }
       })
+
+      // return adjacentRows.map(arr => {
+      //   arr.filter((element, idx) => {
+      //     if (Math.abs(idx - col) <= 1) {
+      //       return element;
+      //     }
+      //   })
+      //   return arr
+      // })
+
+      return adjacentRows.reduce((accum, arr) => {
+        return accum + arr.reduce((acc, el, idx) => {
+          if (el === 1 && Math.abs(col - idx) <= 1) {
+            return acc + 1
+          }
+        }, 0)
+      }, 0)
 
     }
   
