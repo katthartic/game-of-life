@@ -83,9 +83,10 @@ class GameOfLife {
 
       return adjacentRows.reduce((accum, arr) => {
         return accum + arr.reduce((acc, el, idx) => {
-          if (el === 1 && Math.abs(col - idx) <= 1) {
-            return acc + 1
+          if (el === 1 && Math.abs(col - idx) <= 1 && el !== this.getCell(row, col)) {
+            acc += 1;
           }
+          return acc;
         }, 0)
       }, 0)
 
