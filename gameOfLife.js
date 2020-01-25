@@ -36,7 +36,7 @@ class GameOfLife {
     }
 
     getCell(row, col) {
-      if (row <= this.height && col <= this.width) {
+      if (row <= this.height - 1 && col <= this.width - 1) {
         let cell = this.board[row][col]
         if (cell === 1) return 'alive'
         return 'dead'
@@ -62,6 +62,14 @@ class GameOfLife {
     livingNeighbors(row, col) {
       // TODO: Return the count of living neighbors.
 
+      let cellState = this.getCell(row, col);
+
+      return this.board.filter((element, idx) => {
+        if (Math.abs(row - idx) <= 1) {
+          return element;
+        }
+      })
+
     }
   
   
@@ -83,4 +91,6 @@ class GameOfLife {
       this.board = newBoard;
     }
   }
+
+let game = new GameOfLife(5,5);
   
