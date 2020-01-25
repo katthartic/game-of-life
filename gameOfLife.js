@@ -36,11 +36,24 @@ class GameOfLife {
     }
 
     getCell(row, col) {
-      let cell = this.board[row][col]
-      if (cell === 1) return 'alive'
-      return 'dead'
+      if (row <= this.height && col <= this.width) {
+        let cell = this.board[row][col]
+        if (cell === 1) return 'alive'
+        return 'dead'
+      } else {
+        alert("Invalid coordinates")
+      }
     }
-  
+
+    toggleCell(row, col) {
+      let cellState = this.getCell(row, col)
+      if (cellState === 'alive') {
+        this.board[row][col] = 0
+      } else if (cellState === 'dead') {
+        this.board[row][col] = 1
+      }
+    }
+
   
     /**
      * Return the amount of living neighbors around a given coordinate.
