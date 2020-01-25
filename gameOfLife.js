@@ -9,6 +9,7 @@ class GameOfLife {
      * Returns a 2D Array
      */
   
+
     makeBoard() {
       // TODO: Create and return an 2D Array 
       // with `this.heigh` as rows and `this.width` as cols.
@@ -19,6 +20,25 @@ class GameOfLife {
       //  [0, 0, 0],
       //  [0, 0, 0],
       // ]
+
+      let board = []
+
+      for (let i = 0; i < this.height; i++) {
+        let rowArr = []
+        for (let j = 0; j < this.width; j++) {
+          rowArr.push(0)
+        }
+        board.push(rowArr)
+      }
+
+      return board
+
+    }
+
+    getCell(row, col) {
+      let cell = this.board[row][col]
+      if (cell === 1) return 'alive'
+      return 'dead'
     }
   
   
@@ -28,6 +48,7 @@ class GameOfLife {
   
     livingNeighbors(row, col) {
       // TODO: Return the count of living neighbors.
+
     }
   
   
